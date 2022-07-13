@@ -19,17 +19,16 @@ contract Casino {
     
     function Casino(uint256 _minimumBet) public {
         owner = msg.sender;
-        if (minimumBet != 0) minimumBet = minimumBet;
+        if (_minimumBet != 0) minimumBet = _minimumBet;
     }
     
-    function() public payable {}
-
+    // function() public payable {}
     function kill() public {
         if (msg.sender == owner) selfdestruct(owner);
     }
 
-    function checkPlayerExists(address player) public constant returns(bool){
-        for (uint256 i = 0; i < players.length; i++){
+    function checkPlayerExists(address player) public constant returns(bool) {
+        for (uint256 i = 0; i < players.length; i++) {
             if (players[i] == player) return true;
         }
         return false;
